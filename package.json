@@ -1,0 +1,73 @@
+{
+  "name": "my-electron-app",
+  "version": "1.0.0",
+  "main": "main.js",
+  "author": "Jeff",
+  "description": "My Electron App",
+  "license": "MIT",
+  "scripts": {
+    "start": "electron-forge start",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
+  },
+  "config": {
+    "forge": {
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "my-electron-app"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "platforms": [
+            "linux"
+          ]
+        }
+      ],
+      "packagerConfig": {
+        "executableName": "my-electron-app",
+        "packageManager": "npm",
+        "prune": true,
+        "ignore": [
+          "/src/pycalc$",
+          "\\.git(ignore|config)",
+          "\\.vscode",
+          "\\.idea",
+          "/package-lock\\.json",
+          "Pipfile($|\\.lock)",
+          "/(api_pythermal|api|prtail)\\.spec",
+          "/bin$",
+          "/build$",
+          "/out2$",
+          "/Output$",
+          "/README\\.md",
+          "/junk*",
+          "/print42\\.iss",
+          "/UsbDk_1.0.19_x64\\.msi",
+          "/(api_pythermal|t|t2)\\.py$",
+          "/pythermal$"
+        ]
+      }
+    }
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "^6.3.0",
+    "@electron-forge/maker-deb": "^6.3.0",
+    "@electron-forge/maker-rpm": "^6.3.0",
+    "@electron-forge/maker-squirrel": "^6.3.0",
+    "@electron-forge/maker-zip": "^6.3.0",
+    "@electron-forge/plugin-auto-unpack-natives": "^6.3.0",
+    "electron": "^26.0.0"
+  },
+  "dependencies": {
+    "electron-squirrel-startup": "^1.0.0"
+  }
+}
